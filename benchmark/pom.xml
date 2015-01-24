@@ -88,6 +88,10 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
+                <configuration>
+                    <source>${javac.target}</source>
+                    <target>${javac.target}</target>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>process-sources</phase>
