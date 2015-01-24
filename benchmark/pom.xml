@@ -11,7 +11,7 @@
         <artifactId>projecteuler-parent</artifactId>
         <groupId>de.rkraneis.projecteuler</groupId>
         <version>0.1-SNAPSHOT</version>
-        <relativePath>parent</relativePath>
+        <relativePath>../parent</relativePath>
     </parent>
 
     <dependencies>
