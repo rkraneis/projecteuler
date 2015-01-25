@@ -3,6 +3,7 @@ package de.rkraneis.projecteuler.java;
 
 import static java.util.stream.IntStream.*;
 import static de.rkraneis.projecteuler.java.Util.*;
+import java.util.stream.IntStream;
 
 public class Solutions {
 
@@ -52,6 +53,13 @@ public class Solutions {
         return iterate(3, n -> n + 3).limit(999 / 3).sum()
                 + iterate(5, n -> n + 5).limit(999 / 5).sum()
                 - iterate(3 * 5, n -> n + 3 * 5).limit(999 / (3 * 5)).sum();
+    }
+
+    public static int problem1_Stream_Generated2() {
+        final int[] i = {0, 0, 0};
+        return generate(() -> i[0] += 3).limit(999 / 3).sum()
+                + generate(() -> i[1] += 5).limit(999 / 5).sum()
+                - generate(() -> i[2] += 15).limit(999 / 15).sum();
     }
 
     public static int problem2_Iterative() {

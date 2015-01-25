@@ -22,9 +22,9 @@ object SolutionsBenchmark {
       //.include(".*" + className + ".problem2.*")
       //.verbosity(VerboseMode.EXTRA)
       .warmupIterations(5)
-      //.warmupTime(TimeValue.microseconds(100))
+      //.warmupTime(TimeValue.microseconds(500))
       .measurementIterations(5)
-      //.measurementTime(TimeValue.milliseconds(100))
+      //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MILLISECONDS)
       .forks(1)
       .build()
@@ -73,6 +73,7 @@ class SolutionsBenchmark {
   @Benchmark def problem1_java_g2 = java.Solutions.problem1_Generated2
   @Benchmark def problem1_java_sf = java.Solutions.problem1_Stream_Filtered
   @Benchmark def problem1_java_sg = java.Solutions.problem1_Stream_Generated
+  @Benchmark def problem1_java_sg2 = java.Solutions.problem1_Stream_Generated2
   @Benchmark def problem1_scala_f = scala.Solutions.problem1_Filtered
   @Benchmark def problem1_scala_g = scala.Solutions.problem1_Generated
 

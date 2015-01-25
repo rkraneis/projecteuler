@@ -34,9 +34,15 @@ public class SolutionsTest {
     }
 
     @Test
+    public void test_Problem1_Streams_Generated2() {
+        assertEquals(233168, problem1_Stream_Generated2());
+    }
+
+    @Test
     public void test_Problem2_Iterative() {
         assertEquals(4613732, problem2_Iterative());
     }
+
     @Test
     public void test_Problem2_Stream() {
         assertEquals(4613732, problem2_Stream());
