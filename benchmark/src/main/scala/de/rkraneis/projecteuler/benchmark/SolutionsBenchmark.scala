@@ -1,10 +1,10 @@
 /* Copyright 2015 René Kraneis */
-package de.rkraneis.projecteuler
+package de.rkraneis.projecteuler.benchmark
 
-import _root_.java.util.Collection
-import _root_.java.util.Locale
-import _root_.java.util.TreeSet
-import _root_.java.util.concurrent.TimeUnit;
+import java.util.Collection
+import java.util.Locale
+import java.util.TreeSet
+import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.OutputTimeUnit
 import org.openjdk.jmh.results.RunResult
 import org.openjdk.jmh.results.format.ResultFormatType
@@ -48,11 +48,14 @@ import org.openjdk.jmh.annotations.Scope
 import org.openjdk.jmh.annotations.Setup
 import org.openjdk.jmh.annotations.State;
 
-import _root_.clojure.java.api.Clojure
-import _root_.clojure.lang.IFn
+import clojure.java.api.Clojure
+import clojure.lang.IFn
+
+import de.rkraneis.projecteuler._
 
 @State(Scope.Thread)
 class SolutionsBenchmark {
+
 
   var cljb, clj1f, clj1g, clj2: IFn = _;
   val NU = "de.rkraneis.projecteuler.clojure.util"
