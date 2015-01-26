@@ -2,10 +2,12 @@
 package de.rkraneis.projecteuler
 
 import _root_.java.util.Collection
+import _root_.java.util.Locale
 import _root_.java.util.TreeSet
 import _root_.java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.OutputTimeUnit
 import org.openjdk.jmh.results.RunResult
+import org.openjdk.jmh.results.format.ResultFormatType
 import org.openjdk.jmh.runner.Runner
 import org.openjdk.jmh.runner.options.OptionsBuilder
 import org.openjdk.jmh.runner.options.VerboseMode
@@ -16,17 +18,23 @@ object SolutionsBenchmark {
 
   def main(args: Array[String]): Unit = {
     val className = classOf[SolutionsBenchmark].getSimpleName
+    val resultFormat = ResultFormatType.JSON
     val opts = new OptionsBuilder()
       //.include(".*" + className + ".*")
-      .include(".*" + className + ".problem1.*")
+      .include(".*" + className + ".p1.*a.a_[sfg]$")
+      //.include(".*" + className + ".problem1.*a.a_g.*")
       //.include(".*" + className + ".problem2.*")
       //.verbosity(VerboseMode.EXTRA)
-      .warmupIterations(5)
-      //.warmupTime(TimeValue.microseconds(500))
-      .measurementIterations(5)
+      //.warmupIterations(20)
+      //.warmupTime(TimeValue.milliseconds(500))
+      //.measurementIterations(20)
       //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MILLISECONDS)
-      .forks(1)
+      .result(classOf[SolutionsBenchmark].getCanonicalName 
+              + "/result." 
+              + resultFormat.toString.toLowerCase(Locale.ROOT))
+      .resultFormat(resultFormat)
+      .forks(3)
       .build()
     val runResults:Collection[RunResult] = new Runner(opts).run()
     
@@ -66,22 +74,22 @@ class SolutionsBenchmark {
   @Benchmark def baseline_scala = scala.baseline
   
   
-  @Benchmark def problem1_clojure_f = clj1f.invoke()
-  @Benchmark def problem1_clojure_g = clj1g.invoke()
-  @Benchmark def problem1_java_f = java.Solutions.problem1_Filtered
-  @Benchmark def problem1_java_g1 = java.Solutions.problem1_Generated1
-  @Benchmark def problem1_java_g2 = java.Solutions.problem1_Generated2
-  @Benchmark def problem1_java_sf = java.Solutions.problem1_Stream_Filtered
-  @Benchmark def problem1_java_sg = java.Solutions.problem1_Stream_Generated
-  @Benchmark def problem1_java_sg2 = java.Solutions.problem1_Stream_Generated2
-  @Benchmark def problem1_scala_f = scala.Solutions.problem1_Filtered
-  @Benchmark def problem1_scala_g = scala.Solutions.problem1_Generated
+  @Benchmark def p1_clojure_f = clj1f.invoke()
+  @Benchmark def p1_clojure_g = clj1g.invoke()
+  @Benchmark def p1_java_lf = java.Solutions.problem1_LoopFiltered
+  @Benchmark def p1_java_lg = java.Solutions.problem1_LoopGenerated
+  @Benchmark def p1_java_s = java.Solutions.problem1_Series
+  @Benchmark def p1_java_sf = java.Solutions.problem1_StreamFiltered
+  @Benchmark def p1_java_sg1 = java.Solutions.problem1_StreamGenerated1
+  @Benchmark def p1_java_sg2 = java.Solutions.problem1_StreamGenerated2
+  @Benchmark def p1_scala_f = scala.Solutions.problem1_Filtered
+  @Benchmark def p1_scala_g = scala.Solutions.problem1_Generated
+  @Benchmark def p1_scala_s = scala.Solutions.problem1_Series
 
-  @Benchmark def problem2_clojure = clj2.invoke()
-  @Benchmark def problem2_scala_i = scala.Solutions.problem2_Iterative
-  @Benchmark def problem2_scala_r = scala.Solutions.problem2_Recursive
-  @Benchmark def problem2_scala_s1 = scala.Solutions.problem2_Stream1
-  @Benchmark def problem2_scala_s2 = scala.Solutions.problem2_Stream2
-  @Benchmark def problem2_java_i = java.Solutions.problem2_Iterative
-  @Benchmark def problem2_java_s = java.Solutions.problem2_Stream
+  @Benchmark def p2_clojure_l = clj2.invoke()
+  @Benchmark def p2_java_i = java.Solutions.problem2_Iterative
+  @Benchmark def p2_java_s = java.Solutions.problem2_Stream
+  @Benchmark def p2_scala_i = scala.Solutions.problem2_Iterative
+  @Benchmark def p2_scala_s1 = scala.Solutions.problem2_Stream1
+  @Benchmark def p2_scala_s2 = scala.Solutions.problem2_Stream2
 }

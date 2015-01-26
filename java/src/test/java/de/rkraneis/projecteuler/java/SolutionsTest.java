@@ -10,32 +10,32 @@ public class SolutionsTest {
 
     @Test
     public void test_Problem1_Filtered() {
-        assertEquals(233168, problem1_Filtered());
+        assertEquals(233168, problem1_LoopFiltered());
     }
 
     @Test
     public void test_Problem1_Generated1() {
-        assertEquals(233168, problem1_Generated1());
+        assertEquals(233168, problem1_LoopGenerated());
     }
 
     @Test
     public void test_Problem1_Generated2() {
-        assertEquals(233168, problem1_Generated2());
+        assertEquals(233168, problem1_Series());
     }
 
     @Test
     public void test_Problem1_Streams_Filtered() {
-        assertEquals(233168, problem1_Stream_Filtered());
+        assertEquals(233168, problem1_StreamFiltered());
     }
 
     @Test
     public void test_Problem1_Streams_Generated() {
-        assertEquals(233168, problem1_Stream_Generated());
+        assertEquals(233168, problem1_StreamGenerated1());
     }
 
     @Test
     public void test_Problem1_Streams_Generated2() {
-        assertEquals(233168, problem1_Stream_Generated2());
+        assertEquals(233168, problem1_StreamGenerated2());
     }
 
     @Test
