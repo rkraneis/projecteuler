@@ -33,3 +33,9 @@
   (reduce + (take-while
     (partial >= 4000000)
     (filter even? fib))))
+
+(defn problem3
+  "What is the largest prime factor of the number 600851475143"
+ []
+ (first (factor 600851475143)))
+
