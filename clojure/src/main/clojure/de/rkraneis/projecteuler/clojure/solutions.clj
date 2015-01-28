@@ -19,7 +19,7 @@
 (defn problem1-filtered
   "Find the sum of all the multiples of 3 or 5 below 1000."
   []
-  (reduce + (filter 
+  (reduce + (filter
     #(or 
       (zero? (mod % 3)) 
       (zero? (mod % 5)))
@@ -39,3 +39,11 @@
  []
  (first (factor 600851475143)))
 
+(defn problem4
+  "Find the largest palindrome made from the product of two 3-digit number"
+  []
+  (first 
+    (sort #(> %1 %2) 
+          (filter 
+            #(= (str %) (clojure.string/reverse (str %))) 
+            (set (for [x (range 100 1000) y (range 100 1000)] (* x y)))))))
