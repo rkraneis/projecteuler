@@ -47,3 +47,9 @@
           (filter 
             #(= (str %) (clojure.string/reverse (str %))) 
             (set (for [x (range 100 1000) y (range 100 1000)] (* x y)))))))
+
+(defn problem5
+  "What is the smallest positive number that is evenly divisable by all of the
+   numbers from 1 to 20?"
+  [] (comment "code a 'least common divisor' function and use that instead of pencil and paper")
+  (* 2 2 2 2 3 3 5 7 11 13 17 19))

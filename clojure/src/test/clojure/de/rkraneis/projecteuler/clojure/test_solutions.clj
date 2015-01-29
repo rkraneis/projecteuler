@@ -14,3 +14,6 @@
 
 (deftest test-problem4
   (is (= 906609 (problem4))))
+
+(deftest test-problem5
+  (is (= 232792560 (problem5))))
