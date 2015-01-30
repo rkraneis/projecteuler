@@ -4,12 +4,6 @@
 (defn problem1-generated
   "Find the sum of all the multiples of 3 or 5 below 1000."
   []
-  (comment
-  (reduce + (set
-    (concat
-      (range 0 1000 3)
-      (range 0 1000 5))))
-  )
   (-  
     (+
       (reduce + (range 0 1000 3))
