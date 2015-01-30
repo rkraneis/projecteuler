@@ -15,3 +15,6 @@
   (is (= '(5) (factor 5)))
   (is (= '(3 2) (factor 6)))
   (is (= '(2 2 2) (factor 8))))
+
+(deftest test-largest-palindrome
+  (is (= 9009 (largest-palindrome 10 100))))

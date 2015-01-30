@@ -41,12 +41,8 @@
 
 (defn problem4
   "Find the largest palindrome made from the product of two 3-digit number"
-  []
-  (first 
-    (sort #(> %1 %2) 
-          (filter 
-            #(= (str %) (clojure.string/reverse (str %))) 
-            (set (for [x (range 100 1000) y (range 100 1000)] (* x y)))))))
+  [] 
+  (largest-palindrome 100 1000))
 
 (defn problem5
   "What is the smallest positive number that is evenly divisable by all of the

@@ -17,3 +17,11 @@
      (if (divides n k) 
        (recur (quot n k) k (cons k acc))
        (recur n (inc k) acc)))))
+
+(defn largest-palindrome
+  "returns the largest palindrome made from the product of two numbers in 
+   (range m n)"
+  [m n]
+  (first (sort #(> %1 %2)
+               (filter #(= (str %) (clojure.string/reverse (str %))) 
+                       (set (for [x (range m n) y (range m n)] (* x y)))))))
