@@ -43,3 +43,10 @@
    numbers from 1 to 20?"
   [] (comment "code a 'least common divisor' function and use that instead of pencil and paper")
   (* 2 2 2 2 3 3 5 7 11 13 17 19))
+
+(defn problem6
+  "Find the difference between the sum of the squares of the first one hundred 
+   natural numbers and the square of the sum."
+  []
+  (- (#(* % %) (reduce + (range 1 101)))
+     (reduce + (map #(* % %) (range 1 101)))))
