@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import static de.rkraneis.projecteuler.java.Util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class UtilTest {
 
@@ -48,5 +50,12 @@ public class UtilTest {
     @Test
     public void sum_IntMax() {
         assertEquals(2305843008139952128L, sum(Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void testFactor() {
+        long[] expecteds = {2L, 2L, 5L};
+        long[] actuals = factor(20).stream().mapToLong(n -> n).toArray();
+        assertArrayEquals(expecteds, actuals);
     }
 }

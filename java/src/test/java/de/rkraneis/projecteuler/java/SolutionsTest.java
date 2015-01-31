@@ -47,4 +47,9 @@ public class SolutionsTest {
     public void test_Problem2_Stream() {
         assertEquals(4613732, problem2_Stream());
     }
+
+    @Test
+    public void test_Problem3() {
+        assertEquals(6857, problem3());
+    }
 }

@@ -1,6 +1,8 @@
 /* Copyright (C) 2015 René Kraneis */
 package de.rkraneis.projecteuler.java;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Spliterators;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
@@ -94,6 +96,24 @@ public class Util {
             throw new IllegalArgumentException("n may not be negative");
         }
         return n * (n + 1L) / 2;
+    }
+
+    public static List<Long> factor(long n) {
+        long k = 2;
+        List<Long> acc = new ArrayList<>();
+        while (n > 1) {
+            if (divides(k, n)) {
+                acc.add(k);
+                n /= k;
+            } else {
+                k++;
+            }
+        }
+        return acc;
+    }
+
+    private static boolean divides(long k, long n) {
+        return 0 == n % k;
     }
 }
 

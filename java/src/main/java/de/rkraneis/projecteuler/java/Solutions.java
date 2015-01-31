@@ -3,6 +3,7 @@ package de.rkraneis.projecteuler.java;
 
 import static java.util.stream.IntStream.*;
 import static de.rkraneis.projecteuler.java.Util.*;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Solutions {
@@ -81,5 +82,10 @@ public class Solutions {
 
     public static int problem2_Stream() {
         return fibWhile(n -> n <= 4000000).filter(n -> n % 2 == 0).sum();
+    }
+
+    public static long problem3() {
+        final List<Long> factors = factor(600851475143L);
+        return factors.get(factors.size() - 1);
     }
 }
