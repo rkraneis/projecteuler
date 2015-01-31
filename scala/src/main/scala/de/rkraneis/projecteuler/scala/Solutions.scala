@@ -39,4 +39,6 @@ object Solutions {
 
   def problem2_Stream2 =
     fib2.view.takeWhile(_ <= 4000000).filter(_ % 2 == 0).sum
+  
+  def problem3 = factor(600851475143L).head
 }
