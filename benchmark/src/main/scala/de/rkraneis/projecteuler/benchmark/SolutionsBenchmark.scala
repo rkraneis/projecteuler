@@ -21,23 +21,24 @@ object SolutionsBenchmark {
     val resultFormat = ResultFormatType.JSON
     val opts = new OptionsBuilder()
       //.include(".*" + className + ".*")
-      .include(".*" + className + ".p1.*a.a_[sfg]$")
+      //.include(".*" + className + ".p1.*a.a_[sfg]$")
       //.include(".*" + className + ".problem1.*a.a_g.*")
       //.include(".*" + className + ".problem2.*")
+      .include(".*" + className + ".p3.*")
       //.verbosity(VerboseMode.EXTRA)
       //.warmupIterations(20)
       //.warmupTime(TimeValue.milliseconds(500))
       //.measurementIterations(20)
       //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MILLISECONDS)
-      .result(classOf[SolutionsBenchmark].getCanonicalName 
-              + "/result." 
-              + resultFormat.toString.toLowerCase(Locale.ROOT))
+      .result(classOf[SolutionsBenchmark].getCanonicalName
+        + "/result."
+        + resultFormat.toString.toLowerCase(Locale.ROOT))
       .resultFormat(resultFormat)
       .forks(3)
       .build()
-    val runResults:Collection[RunResult] = new Runner(opts).run()
-    
+    val runResults: Collection[RunResult] = new Runner(opts).run()
+
     // println(runResults)
   }
 
@@ -56,8 +57,7 @@ import de.rkraneis.projecteuler._
 @State(Scope.Thread)
 class SolutionsBenchmark {
 
-
-  var cljb, clj1f, clj1g, clj2: IFn = _;
+  var cljb, clj1f, clj1g, clj2, clj3: IFn = _;
   val NU = "de.rkraneis.projecteuler.clojure.util"
   val NS = "de.rkraneis.projecteuler.clojure.solutions"
 
@@ -70,13 +70,13 @@ class SolutionsBenchmark {
     clj1f = Clojure.`var`(NS, "problem1-filtered")
     clj1g = Clojure.`var`(NS, "problem1-generated")
     clj2 = Clojure.`var`(NS, "problem2")
+    clj3 = Clojure.`var`(NS, "problem3")
   }
 
   @Benchmark def baseline_clojure = cljb.invoke()
   @Benchmark def baseline_java = java.Util.baseline
   @Benchmark def baseline_scala = scala.baseline
-  
-  
+
   @Benchmark def p1_clojure_f = clj1f.invoke()
   @Benchmark def p1_clojure_g = clj1g.invoke()
   @Benchmark def p1_java_lf = java.Solutions.problem1_LoopFiltered
@@ -95,4 +95,9 @@ class SolutionsBenchmark {
   @Benchmark def p2_scala_i = scala.Solutions.problem2_Iterative
   @Benchmark def p2_scala_s1 = scala.Solutions.problem2_Stream1
   @Benchmark def p2_scala_s2 = scala.Solutions.problem2_Stream2
+
+  @Benchmark def p3_clojure = clj2.invoke()
+  @Benchmark def p3_java_l = java.Solutions.problem3
+  @Benchmark def p3_java_b = java.Solutions.problem3_BigInteger
+  @Benchmark def p3_scala = scala.Solutions.problem3
 }
