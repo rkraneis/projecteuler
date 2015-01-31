@@ -1,6 +1,7 @@
 /* Copyright (C) 2015 René Kraneis */
 package de.rkraneis.projecteuler.java;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Spliterators;
@@ -114,6 +115,24 @@ public class Util {
 
     private static boolean divides(long k, long n) {
         return 0 == n % k;
+    }
+
+    public static List<BigInteger> factor(BigInteger n) {
+        BigInteger k = BigInteger.valueOf(2);
+        List<BigInteger> acc = new ArrayList<>();
+        while (n.compareTo(BigInteger.ONE) > 0) {
+            if (divides(k, n)) {
+                acc.add(k);
+                n = n.divide(k);
+            } else {
+                k= k.add(BigInteger.ONE);
+            }
+        }
+        return acc;
+    }
+
+    private static boolean divides(BigInteger k, BigInteger n) {
+        return n.remainder(k).compareTo(BigInteger.ZERO) == 0;
     }
 }
 

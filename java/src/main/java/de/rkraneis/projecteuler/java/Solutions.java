@@ -3,8 +3,8 @@ package de.rkraneis.projecteuler.java;
 
 import static java.util.stream.IntStream.*;
 import static de.rkraneis.projecteuler.java.Util.*;
+import java.math.BigInteger;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Solutions {
 
@@ -86,6 +86,12 @@ public class Solutions {
 
     public static long problem3() {
         final List<Long> factors = factor(600851475143L);
+        return factors.get(factors.size() - 1);
+    }
+
+    public static BigInteger problem3_BigInteger() {
+        final List<BigInteger> factors
+                = factor(BigInteger.valueOf(600851475143L));
         return factors.get(factors.size() - 1);
     }
 }

@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import static de.rkraneis.projecteuler.java.Solutions.*;
+import java.math.BigInteger;
 
 public class SolutionsTest {
 
@@ -51,5 +52,10 @@ public class SolutionsTest {
     @Test
     public void test_Problem3() {
         assertEquals(6857, problem3());
+    }
+
+    @Test
+    public void test_Problem3_BigInteger() {
+        assertEquals(BigInteger.valueOf(6857), problem3_BigInteger());
     }
 }
