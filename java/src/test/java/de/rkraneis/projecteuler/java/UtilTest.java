@@ -55,15 +55,14 @@ public class UtilTest {
 
     @Test
     public void testFactor() {
-        long[] expecteds = {2L, 2L, 5L};
+        long[] expecteds = {5L, 2L, 2L};
         long[] actuals = factor(20).stream().mapToLong(n -> n).toArray();
         assertArrayEquals(expecteds, actuals);
     }
 
     @Test
     public void testFactorBigInteger() {
-        BigInteger[] expecteds = {BigInteger.valueOf(2), BigInteger.valueOf(2),
-            BigInteger.valueOf(5)};
+        BigInteger[] expecteds = {BigInteger.valueOf(5), BigInteger.valueOf(2), BigInteger.valueOf(2)};
         BigInteger[] actuals
                 = factor(BigInteger.valueOf(20)).toArray(new BigInteger[3]);
         assertArrayEquals(expecteds, actuals);

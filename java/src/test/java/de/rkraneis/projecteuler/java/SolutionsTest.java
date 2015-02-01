@@ -11,51 +11,52 @@ public class SolutionsTest {
 
     @Test
     public void test_Problem1_Filtered() {
-        assertEquals(233168, problem1_LoopFiltered());
+        assertEquals(233168, problem1_LoopFiltered(1000));
     }
 
     @Test
     public void test_Problem1_Generated1() {
-        assertEquals(233168, problem1_LoopGenerated());
+        assertEquals(233168, problem1_LoopGenerated(1000));
     }
 
     @Test
     public void test_Problem1_Generated2() {
-        assertEquals(233168, problem1_Series());
+        assertEquals(233168, problem1_Series(1000));
     }
 
     @Test
     public void test_Problem1_Streams_Filtered() {
-        assertEquals(233168, problem1_StreamFiltered());
+        assertEquals(233168, problem1_StreamFiltered(1000));
     }
 
     @Test
     public void test_Problem1_Streams_Generated() {
-        assertEquals(233168, problem1_StreamGenerated1());
+        assertEquals(233168, problem1_StreamGenerated1(1000));
     }
 
     @Test
     public void test_Problem1_Streams_Generated2() {
-        assertEquals(233168, problem1_StreamGenerated2());
+        assertEquals(233168, problem1_StreamGenerated2(1000));
     }
 
     @Test
     public void test_Problem2_Iterative() {
-        assertEquals(4613732, problem2_Iterative());
+        assertEquals(4613732, problem2_Iterative(4000000));
     }
 
     @Test
     public void test_Problem2_Stream() {
-        assertEquals(4613732, problem2_Stream());
+        assertEquals(4613732, problem2_Stream(4000000));
     }
 
     @Test
     public void test_Problem3() {
-        assertEquals(6857, problem3());
+        assertEquals(6857, problem3(600851475143L));
     }
 
     @Test
     public void test_Problem3_BigInteger() {
-        assertEquals(BigInteger.valueOf(6857), problem3_BigInteger());
+        assertEquals(BigInteger.valueOf(6857),
+                problem3_BigInteger(BigInteger.valueOf(600851475143L)));
     }
 }

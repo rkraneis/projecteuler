@@ -3,40 +3,40 @@
 
 (defn problem1-generated
   "Find the sum of all the multiples of 3 or 5 below 1000."
-  []
+  [n]
   (-  
     (+
-      (reduce + (range 0 1000 3))
-      (reduce + (range 0 1000 5)))
-    (reduce + (range 0 1000 15))))
+      (reduce + (range 0 n 3))
+      (reduce + (range 0 n 5)))
+    (reduce + (range 0 n 15))))
 
 (defn problem1-filtered
   "Find the sum of all the multiples of 3 or 5 below 1000."
-  []
+  [n]
   (reduce + (filter
     #(or 
       (zero? (mod % 3)) 
       (zero? (mod % 5)))
-    (range 1000))))
+    (range n))))
 
 
 (defn problem2 
   "By considering the terms in the Fibonacci sequence whose values do not
    exceed four million, find the sum of the even-valued terms."
-  []
+  [n]
   (reduce + (take-while
-    (partial >= 4000000)
+    (partial >= n)
     (filter even? fib))))
 
 (defn problem3
   "What is the largest prime factor of the number 600851475143"
- []
- (first (factor 600851475143)))
+ [n]
+ (first (factor n)))
 
 (defn problem4
   "Find the largest palindrome made from the product of two 3-digit number"
-  [] 
-  (largest-palindrome 100 1000))
+  [n m] 
+  (largest-palindrome n m))
 
 (defn problem5
   "What is the smallest positive number that is evenly divisable by all of the
@@ -47,6 +47,6 @@
 (defn problem6
   "Find the difference between the sum of the squares of the first one hundred 
    natural numbers and the square of the sum."
-  []
-  (- (#(* % %) (reduce + (range 1 101)))
-     (reduce + (map #(* % %) (range 1 101)))))
+  [n]
+  (- (#(* % %) (reduce + (range 1 (+ n 1))))
+     (reduce + (map #(* % %) (range 1 (+ n 1))))))

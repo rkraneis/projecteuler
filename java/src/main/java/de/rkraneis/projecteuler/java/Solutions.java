@@ -4,13 +4,14 @@ package de.rkraneis.projecteuler.java;
 import static java.util.stream.IntStream.*;
 import static de.rkraneis.projecteuler.java.Util.*;
 import java.math.BigInteger;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Solutions {
 
-    public static int problem1_LoopFiltered() {
+    public static int problem1_LoopFiltered(int n) {
         int sum = 0;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < n; i++) {
             if (i % 3 == 0 || i % 5 == 0) {
                 sum += i;
             }
@@ -21,8 +22,9 @@ public class Solutions {
     /**
      * simple loop
      */
-    public static int problem1_LoopGenerated() {
-        return loopSum(999, 3) + seriesSum(999, 5) - seriesSum(999, 15);
+    public static int problem1_LoopGenerated(int n) {
+        n--;
+        return loopSum(n, 3) + seriesSum(n, 5) - seriesSum(n, 15);
     }
 
     private static int loopSum(final int n, final int s) {
@@ -36,8 +38,9 @@ public class Solutions {
     /**
      * arithmetic sum
      */
-    public static int problem1_Series() {
-        return seriesSum(999, 3) + seriesSum(999, 5) - seriesSum(999, 15);
+    public static int problem1_Series(int n) {
+        n--;
+        return seriesSum(n, 3) + seriesSum(n, 5) - seriesSum(n, 15);
     }
 
     private static int seriesSum(int n) {
@@ -48,25 +51,26 @@ public class Solutions {
         return seriesSum(n / s) * s;
     }
 
-    public static int problem1_StreamFiltered() {
-        return range(0, 1000)
-                .filter(n -> (n % 3 == 0 || n % 5 == 0))
+    public static int problem1_StreamFiltered(int n) {
+        return range(0, n)
+                .filter(m -> (m % 3 == 0 || m % 5 == 0))
                 .sum();
     }
 
-    public static int problem1_StreamGenerated1() {
-        return iterate(3, n -> n + 3).limit(999 / 3).sum()
-                + iterate(5, n -> n + 5).limit(999 / 5).sum()
-                - iterate(3 * 5, n -> n + 3 * 5).limit(999 / (3 * 5)).sum();
+    public static int problem1_StreamGenerated1(int n) {
+        n--;
+        return iterate(3, m -> m + 3).limit(n / 3).sum()
+                + iterate(5, m -> m + 5).limit(n / 5).sum()
+                - iterate(3 * 5, m -> m + 3 * 5).limit(n / (3 * 5)).sum();
     }
 
-    public static int problem1_StreamGenerated2() {
-        return incWhile(3, n -> n < 1000).sum()
-                + incWhile(5, n -> n < 1000).sum()
-                - incWhile(15, n -> n < 1000).sum();
+    public static int problem1_StreamGenerated2(int n) {
+        return incWhile(3, m -> m < n).sum()
+                + incWhile(5, m -> m < n).sum()
+                - incWhile(15, m -> m < n).sum();
     }
 
-    public static int problem2_Iterative() {
+    public static int problem2_Iterative(int n) {
         int sum = 0, current = 0;
         int previousPrevious = 0, previous = 1;
         do {
@@ -76,22 +80,19 @@ public class Solutions {
             current = previous;
             previous += previousPrevious;
             previousPrevious = current;
-        } while (current <= 4000000);
+        } while (current <= n);
         return sum;
     }
 
-    public static int problem2_Stream() {
-        return fibWhile(n -> n <= 4000000).filter(n -> n % 2 == 0).sum();
+    public static int problem2_Stream(int n) {
+        return fibWhile(m -> m <= n).filter(m -> m % 2 == 0).sum();
     }
 
-    public static long problem3() {
-        final List<Long> factors = factor(600851475143L);
-        return factors.get(factors.size() - 1);
+    public static long problem3(long n) {
+        return factor(n).getFirst();
     }
 
-    public static BigInteger problem3_BigInteger() {
-        final List<BigInteger> factors
-                = factor(BigInteger.valueOf(600851475143L));
-        return factors.get(factors.size() - 1);
+    public static BigInteger problem3_BigInteger(BigInteger n) {
+        return factor(n).getFirst();
     }
 }

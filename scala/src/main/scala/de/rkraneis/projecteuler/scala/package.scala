@@ -5,6 +5,7 @@ package de.rkraneis.projecteuler.scala
 object `package` {
 
   def baseline = 42
+  def baseline(n: Int) = n
 
   val fib: Stream[Int] = 0 #:: fib.scanLeft(1)(_ + _)
   val fib2 = Stream.iterate((0, 1)) { case (a, b) => (b, a + b) }.map(_._1)
@@ -32,7 +33,7 @@ object `package` {
   def factor[@specialized(Int, Long) T: Integral](n: T): List[T] =
     factor(n, implicitly[Integral[T]].fromInt(2), List[T]())
 
-  def divides[@specialized(Int, Long) T: Integral](k: T, n: T)(): Boolean =
+  def divides[@specialized(Int, Long) T: Integral](k: T, n: T)() =
     implicitly[Integral[T]].rem(n, k) == implicitly[Integral[T]].fromInt(0)
 
   private def factor[@specialized(Int, Long) T](n: T, k: T, acc: List[T])(implicit num: Integral[T]): List[T] = {

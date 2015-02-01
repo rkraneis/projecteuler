@@ -1,6 +1,6 @@
 (ns de.rkraneis.projecteuler.clojure.util)
 
-(defn baseline [] 42)
+(defn baseline ([] 42) ([n] n))
 
 (def fib 
   (lazy-cat

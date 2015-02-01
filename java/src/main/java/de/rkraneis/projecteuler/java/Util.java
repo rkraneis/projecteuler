@@ -3,6 +3,7 @@ package de.rkraneis.projecteuler.java;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Spliterators;
 import java.util.function.Consumer;
@@ -15,6 +16,10 @@ public class Util {
 
     public static int baseline() {
         return 42;
+    }
+
+    public static int baseline(int n) {
+        return n;
     }
 
     private static class IncrementGenerator extends AbstractGenerator {
@@ -99,12 +104,13 @@ public class Util {
         return n * (n + 1L) / 2;
     }
 
-    public static List<Long> factor(long n) {
+    // XXX try largestFactor without List; or LinkedList
+    public static LinkedList<Long> factor(long n) {
         long k = 2;
-        List<Long> acc = new ArrayList<>();
+        LinkedList<Long> acc = new LinkedList<>();
         while (n > 1) {
             if (divides(k, n)) {
-                acc.add(k);
+                acc.addFirst(k);
                 n /= k;
             } else {
                 k++;
@@ -117,15 +123,15 @@ public class Util {
         return 0 == n % k;
     }
 
-    public static List<BigInteger> factor(BigInteger n) {
+    public static LinkedList<BigInteger> factor(BigInteger n) {
         BigInteger k = BigInteger.valueOf(2);
-        List<BigInteger> acc = new ArrayList<>();
+        LinkedList<BigInteger> acc = new LinkedList<>();
         while (n.compareTo(BigInteger.ONE) > 0) {
             if (divides(k, n)) {
-                acc.add(k);
+                acc.addFirst(k);
                 n = n.divide(k);
             } else {
-                k= k.add(BigInteger.ONE);
+                k = k.add(BigInteger.ONE);
             }
         }
         return acc;
