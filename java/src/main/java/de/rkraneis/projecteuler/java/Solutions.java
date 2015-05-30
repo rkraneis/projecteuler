@@ -6,13 +6,16 @@ import static de.rkraneis.projecteuler.java.Util.*;
 import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
+import java.util.function.IntUnaryOperator;
 
 public class Solutions {
 
-    public static int problem1_LoopFiltered(int n) {
+    public static int problem1_LoopFiltered(final int n) {
         int sum = 0;
         for (int i = 0; i < n; i++) {
-            if (i % 3 == 0 || i % 5 == 0) {
+            if (is(i, divisibleByThree.or(divisibleByFive))) {
                 sum += i;
             }
         }
@@ -22,9 +25,9 @@ public class Solutions {
     /**
      * simple loop
      */
-    public static int problem1_LoopGenerated(int n) {
-        n--;
-        return loopSum(n, 3) + seriesSum(n, 5) - seriesSum(n, 15);
+    public static int problem1_LoopGenerated(final int n) {
+        final int m = n - 1;
+        return loopSum(m, 3) + seriesSum(m, 5) - seriesSum(m, 15);
     }
 
     private static int loopSum(final int n, final int s) {
@@ -38,9 +41,9 @@ public class Solutions {
     /**
      * arithmetic sum
      */
-    public static int problem1_Series(int n) {
-        n--;
-        return seriesSum(n, 3) + seriesSum(n, 5) - seriesSum(n, 15);
+    public static int problem1_Series(final int n) {
+        final int m = n - 1;
+        return seriesSum(m, 3) + seriesSum(m, 5) - seriesSum(m, 15);
     }
 
     private static int seriesSum(int n) {
@@ -53,9 +56,12 @@ public class Solutions {
 
     public static int problem1_StreamFiltered(int n) {
         return range(0, n)
-                .filter(m -> (m % 3 == 0 || m % 5 == 0))
+                .filter(divisibleByThree.or(divisibleByFive))
                 .sum();
     }
+
+    private static final IntPredicate divisibleByThree = m -> (m % 3 == 0);
+    private static final IntPredicate divisibleByFive = m -> (m % 5 == 0);
 
     public static int problem1_StreamGenerated1(int n) {
         n--;
@@ -74,7 +80,7 @@ public class Solutions {
         int sum = 0, current = 0;
         int previousPrevious = 0, previous = 1;
         do {
-            if (current % 2 == 0) {
+            if (is(current, even)) {
                 sum += current;
             }
             current = previous;
@@ -85,7 +91,7 @@ public class Solutions {
     }
 
     public static int problem2_Stream(int n) {
-        return fibWhile(m -> m <= n).filter(m -> m % 2 == 0).sum();
+        return fibWhile(m -> m <= n).filter(even).sum();
     }
 
     public static long problem3(long n) {

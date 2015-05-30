@@ -22,6 +22,12 @@ public class Util {
         return n;
     }
 
+    public static IntPredicate even = n -> (n & 1) == 0;
+
+    public static boolean is(int i, IntPredicate p) {
+        return p.test(i);
+    }
+
     private static class IncrementGenerator extends AbstractGenerator {
 
         private int current = 0;
