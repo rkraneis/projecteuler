@@ -7,7 +7,7 @@
     [0 1]
     (map + fib (rest fib))))
 
-(defn divides [n k] (= 0 (rem n k)))
+(defn divides [n k] (zero? (rem n k)))
 
 (defn factor
   "return factors of n"
