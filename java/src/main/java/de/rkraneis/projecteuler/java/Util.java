@@ -125,6 +125,36 @@ public class Util {
         return acc;
     }
 
+    public static LinkedList<Long> factorLast(long n) {
+        long k = 2;
+        LinkedList<Long> acc = new LinkedList<>();
+        while (n > 1) {
+            if (divides(k, n)) {
+                acc.addLast(k);
+                n /= k;
+            } else {
+                k++;
+            }
+        }
+        return acc;
+    }
+
+    public static long largestFactor(long n) {
+        long k = 2;
+        long largestFactor = 1;
+        while (n > 1) {
+            if (divides(k, n)) {
+                if (k > largestFactor) {
+                    largestFactor = k;
+                }
+                n /= k;
+            } else {
+                k++;
+            }
+        }
+        return largestFactor;
+    }
+
     private static boolean divides(long k, long n) {
         return 0 == n % k;
     }
