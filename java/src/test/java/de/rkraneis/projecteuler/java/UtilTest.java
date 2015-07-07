@@ -61,6 +61,13 @@ public class UtilTest {
     }
 
     @Test
+    public void testFactor2() {
+        long expected = 5L;
+        long actual = factor2(20);
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void testFactorBigInteger() {
         BigInteger[] expecteds = {BigInteger.valueOf(5), BigInteger.valueOf(2), BigInteger.valueOf(2)};
         BigInteger[] actuals

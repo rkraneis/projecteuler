@@ -101,6 +101,7 @@ public class Util {
      * </pre>
      *
      * @param n the integer to sum up to
+     *
      * @return sum of all integers from 0 to n
      */
     final public static long sum(int n) {
@@ -137,6 +138,20 @@ public class Util {
             }
         }
         return acc;
+    }
+
+    public static long factor2(long n) {
+        long k = 2;
+        long f = 0;
+        while (n > 1) {
+            if (divides(k, n)) {
+                f = k;
+                n /= k;
+            } else {
+                k++;
+            }
+        }
+        return f;
     }
 
     public static long largestFactor(long n) {

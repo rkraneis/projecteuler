@@ -106,6 +106,10 @@ public class Solutions {
         return largestFactor(n);
     }
 
+    public static long problem3_noList(long n) {
+        return factor2(n);
+    }
+
     public static BigInteger problem3_BigInteger(BigInteger n) {
         return factor(n).getFirst();
     }

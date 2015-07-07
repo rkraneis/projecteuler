@@ -24,14 +24,14 @@ object SolutionsBenchmark {
       //.include(".*" + className + ".p1.*a.a_[sfg]$")
       //.include(".*" + className + ".problem1.*a.a_g.*")
       //.include(".*" + className + ".problem2.*")
-      //.include(".*" + className + ".p3.*")
+      .include(".*" + className + ".p3.*")
       //.verbosity(VerboseMode.EXTRA)
       //.warmupIterations(20)
       //.warmupTime(TimeValue.milliseconds(500))
       //.measurementIterations(20)
       //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MILLISECONDS)
-      .result(classOf[SolutionsBenchmark].getCanonicalName
+      .result(classOf[SolutionsBenchmark].getCanonicalName()
         + "/result."
         + resultFormat.toString.toLowerCase(Locale.ROOT))
       .resultFormat(resultFormat)
@@ -78,7 +78,7 @@ class SolutionsBenchmark {
     p3b = BigInteger.valueOf(p3)
   }
 
-  @Benchmark def baseline1_clojure = cljb.invoke()
+  @Benchmark def baseline1_clojure = cljb.invoke
   @Benchmark def baseline1_java = java.Util.baseline
   @Benchmark def baseline1_scala = scala.baseline
   
@@ -112,6 +112,7 @@ class SolutionsBenchmark {
   var p3b: BigInteger = _
   @Benchmark def p3_clojure = clj2.invoke(p3)
   @Benchmark def p3_java_l = java.Solutions.problem3(p3)
+  @Benchmark def p3_java_ln = java.Solutions.problem3_noList(p3)
   @Benchmark def p3_java_b = java.Solutions.problem3_BigInteger(p3b)
   @Benchmark def p3_scala = scala.Solutions.problem3(p3)
 }
