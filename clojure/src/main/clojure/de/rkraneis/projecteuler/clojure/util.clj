@@ -7,14 +7,14 @@
     [0 1]
     (map + fib (rest fib))))
 
-(defn divides [n k] (zero? (rem n k)))
+(defn divides? [n k] (zero? (rem n k)))
 
 (defn factor
   "return factors of n"
   ([n] (factor n 2 ())) 
   ([n k acc]
    (if (= 1 n) acc
-     (if (divides n k) 
+     (if (divides? n k) 
        (recur (quot n k) k (cons k acc))
        (recur n (inc k) acc)))))
 
