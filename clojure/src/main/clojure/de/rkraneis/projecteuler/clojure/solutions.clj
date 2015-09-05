@@ -50,3 +50,10 @@
   [n]
   (- (#(* % %) (reduce + (range 1 (+ n 1))))
      (reduce + (map #(* % %) (range 1 (+ n 1))))))
+
+(defn problem7
+  "By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see 
+   that the 6th prime is 13.
+   What is the 10 001st prime number?"
+  [n] (comment "lazyly evaluate all numbers and take the 10 001st")
+  (last (take n (filter #(not (nil? %)) (map prime? (range))))))

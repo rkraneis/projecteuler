@@ -20,3 +20,6 @@
 
 (deftest test-problem6
   (is (= 25164150 (problem6 100))))
+
+(deftest test-problem7
+  (is (= 104743 (problem7 10001))))

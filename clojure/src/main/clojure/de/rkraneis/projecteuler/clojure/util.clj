@@ -25,3 +25,13 @@
   (first (sort #(> %1 %2)
                (filter #(= (str %) (clojure.string/reverse (str %))) 
                        (set (for [x (range m n) y (range m n)] (* x y)))))))
+
+(defn prime?
+  "tell if n is prime"
+  ([n]
+    (if (> 2 n) nil
+      (prime? n 2)))
+  ([n k]
+    (if (> (* k k) n) n
+      (if (divides? n k) nil
+        (recur n (inc k))))))

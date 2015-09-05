@@ -18,3 +18,19 @@
 
 (deftest test-largest-palindrome
   (is (= 9009 (largest-palindrome 10 100))))
+
+(deftest test-prime
+  (is (not (prime? 1)))
+  (is (prime? 2))
+  (is (prime? 3))
+  (is (not (prime? 4)))
+  (is (prime? 5))
+  (is (not (prime? 6)))
+  (is (prime? 7))
+  (is (not (prime? 8)))
+  (is (not (prime? 9)))
+  (is (not (prime? 10)))
+  (is (prime? 11))
+  (is (not (prime? 12)))
+  (is (prime? 13))
+  (is (prime? 6857)))
