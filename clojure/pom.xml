@@ -23,6 +23,9 @@
                 <artifactId>clojure-maven-plugin</artifactId>
                 <version>1.7.1</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <replScript>repl.clj</replScript>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -31,6 +34,16 @@
             <groupId>org.clojure</groupId>
             <artifactId>clojure</artifactId>
             <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>tools.namespace</artifactId>
+            <version>0.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.offbytwo.iclojure</groupId>
+            <artifactId>iclojure</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 </project>
