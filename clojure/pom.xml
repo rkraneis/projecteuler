@@ -40,10 +40,27 @@
             <artifactId>tools.namespace</artifactId>
             <version>0.2.11</version>
         </dependency>
-        <dependency>
-            <groupId>com.offbytwo.iclojure</groupId>
-            <artifactId>iclojure</artifactId>
-            <version>1.2.0</version>
-        </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>repl-jline</id>
+            <dependencies>
+                <dependency>
+                    <groupId>jline</groupId>
+                    <artifactId>jline</artifactId>
+                    <version>0.9.94</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>repl-iclosure</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.offbytwo.iclojure</groupId>
+                    <artifactId>iclojure</artifactId>
+                    <version>1.2.0</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
