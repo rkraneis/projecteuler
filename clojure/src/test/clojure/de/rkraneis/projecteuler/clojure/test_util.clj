@@ -4,12 +4,18 @@
 
 (deftest test-baseline (is (= 42 (baseline))))
 
+(deftest test-series-sum
+  (is (= 1 (series-sum 1)))
+  (is (= 3 (series-sum 2)))
+  (is (= 1 (series-sum 1 1)))
+  (is (= 2 (series-sum 2 2))))
+
 (deftest test-fib
   (is (= '(0 1 1 2 3 5 8 13 21 34 55 89) (take 12 fib))))
 
-(deftest test-divides 
+(deftest test-divides
   (is (= true (divides? 4 2)))
-  (is (= false (divides? 4 3)))) 
+  (is (= false (divides? 4 3))))
 
 (deftest test-factors
   (is (= '(5) (factor 5)))
