@@ -184,6 +184,29 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Dmyproperty=myvalue</argument>
+                        <argument>-classpath</argument>
+                        <!-- automatically creates the classpath using all project dependencies,
+                        also adding the project build directory -->
+                        <classpath/>
+                        <argument>de.rkraneis.projecteuler.benchmark.${mainClass}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
+    <profiles>
+        <profile><id>baseline</id><properties><mainClass>BaselineBenchmark</mainClass></properties></profile>
+        <profile><id>problem1</id><properties><mainClass>Problem1Benchmark</mainClass></properties></profile>
+        <profile><id>problem2</id><properties><mainClass>Problem2Benchmark</mainClass></properties></profile>
+        <profile><id>problem3</id><properties><mainClass>Problem3Benchmark</mainClass></properties></profile>
+    </profiles>
 </project>

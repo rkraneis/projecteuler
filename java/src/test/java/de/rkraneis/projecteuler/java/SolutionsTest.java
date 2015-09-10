@@ -6,12 +6,13 @@ import static org.junit.Assert.*;
 
 import static de.rkraneis.projecteuler.java.Solutions.*;
 import java.math.BigInteger;
+import static org.hamcrest.CoreMatchers.is;
 
 public class SolutionsTest {
 
     @Test
     public void test_Problem1_Filtered() {
-        assertEquals(233168, problem1_LoopFiltered(1000));
+        assertThat(problem1_LoopFiltered(1000), is(233168));
     }
 
     @Test

@@ -20,7 +20,7 @@ object Solutions {
 
   def seriesSum(n:Int, s:Int):Int = seriesSum(n / s) * s
 
-  /* P2: By considering the terms in the Fibonacci sequence whose values do not 
+  /* P2: By considering the terms in the Fibonacci sequence whose values do not
    * exceed four million, find the sum of the even-valued terms.
    */
   def problem2_Iterative(n: Int) = {
@@ -41,6 +41,6 @@ object Solutions {
 
   def problem2_Stream2 (n: Int) =
     fib2.view.takeWhile(_ <= n).filter(_ % 2 == 0).sum
-  
+
   def problem3(n: Long) = factor(n).head
 }
