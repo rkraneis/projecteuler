@@ -2,11 +2,11 @@
 <!-- Copyright (C) 2015 René Kraneis. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <name>Project Euler (Clojure)</name>
     <artifactId>projecteuler-clojure</artifactId>
     <packaging>clojure</packaging>
-    
+
     <parent>
         <groupId>de.rkraneis.projecteuler</groupId>
         <artifactId>projecteuler-parent</artifactId>
@@ -14,21 +14,6 @@
         <relativePath>../parent</relativePath>
     </parent>
 
-    <build>
-        <sourceDirectory>src/main/clojure</sourceDirectory>
-        <testSourceDirectory>src/test/clojure</testSourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>com.theoryinpractise</groupId>
-                <artifactId>clojure-maven-plugin</artifactId>
-                <version>1.7.1</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <replScript>repl.clj</replScript>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <dependencies>
         <dependency>
             <groupId>org.clojure</groupId>
@@ -41,6 +26,25 @@
             <version>0.2.11</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/clojure</sourceDirectory>
+        <testSourceDirectory>src/test/clojure</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>clojure-maven-plugin</artifactId>
+                <version>1.7.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <warnOnReflection>true</warnOnReflection>
+                    <clojureOptions>-Dclojure.compile.unchecked-math=:warn-on-boxed</clojureOptions>
+                    <replScript>repl.clj</replScript>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
         <profile>
             <id>repl-jline</id>
@@ -63,4 +67,5 @@
             </dependencies>
         </profile>
     </profiles>
+
 </project>
