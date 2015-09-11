@@ -95,5 +95,5 @@
   (key
     (last
       (into (sorted-map)
-            (map #(hash-map (apply * (map char-to-int %)) %)
+            (map #(vector (apply * (map char-to-int %)) %)
                  (partition d 1 n))))))
