@@ -12,14 +12,16 @@
     [0 1]
     (map + fib (rest fib))))
 
-(defn divides? [n k] (zero? (rem n k)))
+(defn divides?
+  "tell if k divides n"
+  [k n] (zero? (rem n k)))
 
 (defn factor
   "return factors of n"
   ([n] (factor n 2 ()))
   ([n k acc]
    (if (= 1 n) acc
-     (if (divides? n k)
+     (if (divides? k n)
        (recur (quot n k) k (cons k acc))
        (recur n (inc k) acc)))))
 
@@ -38,7 +40,7 @@
       (prime? n 2)))
   ([n k]
     (if (> (* k k) n) n
-      (if (divides? n k) nil
+      (if (divides? k n) nil
         (recur n (inc k))))))
 
 (defn char-to-int

@@ -14,8 +14,8 @@
   (is (= '(0 1 1 2 3 5 8 13 21 34 55 89) (take 12 fib))))
 
 (deftest test-divides
-  (is (= true (divides? 4 2)))
-  (is (= false (divides? 4 3))))
+  (is (= true (divides? 2 4)))
+  (is (= false (divides? 3 4))))
 
 (deftest test-factors
   (is (= '(5) (factor 5)))
@@ -40,3 +40,5 @@
   (is (not (prime? 12)))
   (is (prime? 13))
   (is (prime? 6857)))
+
+(comment (run-tests))
