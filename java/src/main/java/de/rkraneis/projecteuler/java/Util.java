@@ -111,7 +111,6 @@ public class Util {
         return n * (n + 1L) / 2;
     }
 
-    // XXX try largestFactor without List; or LinkedList
     public static LinkedList<Long> factor(long n) {
         long k = 2;
         LinkedList<Long> acc = new LinkedList<>();
@@ -140,28 +139,12 @@ public class Util {
         return acc;
     }
 
-    public static long factor2(long n) {
-        long k = 2;
-        long f = 0;
-        while (n > 1) {
-            if (divides(k, n)) {
-                f = k;
-                n /= k;
-            } else {
-                k++;
-            }
-        }
-        return f;
-    }
-
     public static long largestFactor(long n) {
         long k = 2;
         long largestFactor = 1;
         while (n > 1) {
             if (divides(k, n)) {
-                if (k > largestFactor) {
-                    largestFactor = k;
-                }
+                largestFactor = k;
                 n /= k;
             } else {
                 k++;
@@ -186,6 +169,20 @@ public class Util {
             }
         }
         return acc;
+    }
+
+    public static BigInteger largestFactor(BigInteger n) {
+        BigInteger k = BigInteger.valueOf(2);
+        BigInteger largestFactor = BigInteger.valueOf(1);
+        while (n.compareTo(BigInteger.ONE) > 0) {
+            if (divides(k, n)) {
+                largestFactor = k;
+                n = n.divide(k);
+            } else {
+                k = k.add(BigInteger.ONE);
+            }
+        }
+        return largestFactor;
     }
 
     private static boolean divides(BigInteger k, BigInteger n) {

@@ -74,7 +74,9 @@ class Problem3Benchmark {
   var p3b: BigInteger = _
   @Benchmark def p3_clojure = clj3.invoke(p3)
   @Benchmark def p3_java_l = java.Solutions.problem3(p3)
+  @Benchmark def p3_java_l2 = java.Solutions.problem3_last(p3)
   @Benchmark def p3_java_ln = java.Solutions.problem3_noList(p3)
   @Benchmark def p3_java_b = java.Solutions.problem3_BigInteger(p3b)
+  @Benchmark def p3_java_bnl = java.Solutions.problem3_BigInteger_noList(p3b)
   @Benchmark def p3_scala = scala.Solutions.problem3(p3)
 }

@@ -53,11 +53,15 @@ public class SolutionsTest {
     @Test
     public void test_Problem3() {
         assertEquals(6857, problem3(600851475143L));
+        assertEquals(6857, problem3_last(600851475143L));
+        assertEquals(6857, problem3_noList(600851475143L));
     }
 
     @Test
     public void test_Problem3_BigInteger() {
         assertEquals(BigInteger.valueOf(6857),
                 problem3_BigInteger(BigInteger.valueOf(600851475143L)));
+        assertEquals(BigInteger.valueOf(6857),
+                problem3_BigInteger_noList(BigInteger.valueOf(600851475143L)));
     }
 }

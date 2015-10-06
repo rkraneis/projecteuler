@@ -99,18 +99,18 @@ public class Solutions {
     }
 
     public static long problem3_last(long n) {
-        return factor(n).getLast();
-    }
-
-    public static long problem3_largest(long n) {
-        return largestFactor(n);
+        return factorLast(n).getLast();
     }
 
     public static long problem3_noList(long n) {
-        return factor2(n);
+        return largestFactor(n);
     }
 
     public static BigInteger problem3_BigInteger(BigInteger n) {
         return factor(n).getFirst();
+    }
+
+    public static BigInteger problem3_BigInteger_noList(BigInteger n) {
+        return largestFactor(n);
     }
 }

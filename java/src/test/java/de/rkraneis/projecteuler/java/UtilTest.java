@@ -61,9 +61,9 @@ public class UtilTest {
     }
 
     @Test
-    public void testFactor2() {
+    public void testFactorLargest() {
         long expected = 5L;
-        long actual = factor2(20);
+        long actual = largestFactor(20);
         assertEquals(expected, actual);
     }
 
@@ -73,5 +73,12 @@ public class UtilTest {
         BigInteger[] actuals
                 = factor(BigInteger.valueOf(20)).toArray(new BigInteger[3]);
         assertArrayEquals(expecteds, actuals);
+    }
+
+    @Test
+    public void testFactorLargestBigInteger() {
+        BigInteger expected = BigInteger.valueOf(5);
+        BigInteger actual = largestFactor(BigInteger.valueOf(20));
+        assertEquals(expected, actual);
     }
 }
