@@ -18,7 +18,9 @@ object BaselineBenchmark {
 
   def main(args: Array[String]): Unit = {
     val className = classOf[BaselineBenchmark].getSimpleName
+    val resultPath = classOf[BaselineBenchmark].getCanonicalName
     val resultFormat = ResultFormatType.JSON
+    val resultExtension = resultFormat.toString.toLowerCase(Locale.ROOT)
     val opts = new OptionsBuilder()
       .include(".*" + className + ".*")
       //.verbosity(VerboseMode.EXTRA)
@@ -27,9 +29,7 @@ object BaselineBenchmark {
       //.measurementIterations(20)
       //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MICROSECONDS)
-      .result(className
-        + "/result."
-        + resultFormat.toString.toLowerCase(Locale.ROOT))
+      .result(resultPath + "/result." + resultExtension)
       .resultFormat(resultFormat)
       .forks(3)
       .build()
@@ -72,6 +72,7 @@ class BaselineBenchmark {
   @Benchmark def baseline1_java = java.Util.baseline
   @Benchmark def baseline1_scala = scala.baseline
   @Benchmark def baseline1_groovy = groovy.Util.baseline
+  @Benchmark def baseline1_frege = frege.Util.baseline(0)
 
   @Param(Array("23")) var pb: Int = _
   @Benchmark def baseline2_clojure = cljb.invoke(pb)
@@ -79,4 +80,5 @@ class BaselineBenchmark {
   @Benchmark def baseline2_java = java.Util.baseline(pb)
   @Benchmark def baseline2_scala = scala.baseline(pb)
   @Benchmark def baseline2_groovy = groovy.Util.baseline(pb)
+  @Benchmark def baseline2_frege = frege.Util.baseline(pb)
 }
