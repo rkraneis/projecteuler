@@ -24,18 +24,16 @@ object Problem1Benchmark {
     val opts = new OptionsBuilder()
       .include(".*" + className + ".*")
       //.verbosity(VerboseMode.EXTRA)
-      .warmupIterations(10)
+      //.warmupIterations(10)
       //.warmupTime(TimeValue.milliseconds(500))
-      .measurementIterations(10)
+      //.measurementIterations(10)
       //.measurementTime(TimeValue.milliseconds(500))
       .timeUnit(TimeUnit.MICROSECONDS)
       .result(resultPath + "/result." + resultExtension)
       .resultFormat(resultFormat)
       .forks(3)
       .build()
-    val runResults: Collection[RunResult] = new Runner(opts).run()
-
-    // println(runResults)
+    new Runner(opts).run()
   }
 
 }
@@ -71,16 +69,19 @@ class Problem1Benchmark {
   }
 
   @Param(Array("1000")) var p1: Int = _
-//  @Benchmark def p1_clojure_f = clj1f.invoke(p1)
+  @Benchmark def p1_clojure_f = clj1f.invoke(p1)
   @Benchmark def p1_clojure_g = clj1g.invoke(p1)
   @Benchmark def p1_clojure_s = clj1s.invoke(p1)
-//  @Benchmark def p1_java_lf = java.Solutions.problem1_LoopFiltered(p1)
-//  @Benchmark def p1_java_lg = java.Solutions.problem1_LoopGenerated(p1)
-//  @Benchmark def p1_java_s = java.Solutions.problem1_Series(p1)
-//  @Benchmark def p1_java_sf = java.Solutions.problem1_StreamFiltered(p1)
-//  @Benchmark def p1_java_sg1 = java.Solutions.problem1_StreamGenerated1(p1)
-//  @Benchmark def p1_java_sg2 = java.Solutions.problem1_StreamGenerated2(p1)
-//  @Benchmark def p1_scala_f = scala.Solutions.problem1_Filtered(p1)
-//  @Benchmark def p1_scala_g = scala.Solutions.problem1_Generated(p1)
-//  @Benchmark def p1_scala_s = scala.Solutions.problem1_Series(p1)
+  @Benchmark def p1_java_lf = java.Solutions.problem1_LoopFiltered(p1)
+  @Benchmark def p1_java_lg = java.Solutions.problem1_LoopGenerated(p1)
+  @Benchmark def p1_java_s = java.Solutions.problem1_Series(p1)
+  @Benchmark def p1_java_sf = java.Solutions.problem1_StreamFiltered(p1)
+  @Benchmark def p1_java_sg1 = java.Solutions.problem1_StreamGenerated1(p1)
+  @Benchmark def p1_java_sg2 = java.Solutions.problem1_StreamGenerated2(p1)
+  @Benchmark def p1_scala_f = scala.Solutions.problem1_Filtered(p1)
+  @Benchmark def p1_scala_g = scala.Solutions.problem1_Generated(p1)
+  @Benchmark def p1_scala_s = scala.Solutions.problem1_Series(p1)
+  @Benchmark def p1_frege_f = frege.Solutions.problem1_filtered(p1)
+  @Benchmark def p1_frege_g = frege.Solutions.problem1_generated(p1)
+  @Benchmark def p1_frege_s = frege.Solutions.problem1_series(p1)
 }

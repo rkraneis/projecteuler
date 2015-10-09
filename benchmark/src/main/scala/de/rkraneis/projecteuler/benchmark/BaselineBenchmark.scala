@@ -33,9 +33,7 @@ object BaselineBenchmark {
       .resultFormat(resultFormat)
       .forks(3)
       .build()
-    val runResults: Collection[RunResult] = new Runner(opts).run()
-
-    // println(runResults)
+    new Runner(opts).run()
   }
 
 }

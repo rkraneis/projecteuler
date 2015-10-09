@@ -33,9 +33,7 @@ object Problem2Benchmark {
       .resultFormat(resultFormat)
       .forks(3)
       .build()
-    val runResults: Collection[RunResult] = new Runner(opts).run()
-
-    // println(runResults)
+    new Runner(opts).run()
   }
 
 }
@@ -75,5 +73,5 @@ class Problem2Benchmark {
   @Benchmark def p2_scala_i = scala.Solutions.problem2_Iterative(p2)
   @Benchmark def p2_scala_s1 = scala.Solutions.problem2_Stream1(p2)
   @Benchmark def p2_scala_s2 = scala.Solutions.problem2_Stream2(p2)
-
+  @Benchmark def p2_frege = frege.Solutions.problem2(p2)
 }
