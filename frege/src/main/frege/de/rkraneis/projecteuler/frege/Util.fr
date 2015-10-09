@@ -1,0 +1,12 @@
+module de.rkraneis.projecteuler.frege.Util where
+
+baseline::Int->Int
+baseline n = n
+
+import Test.QuickCheck
+
+testBaseline = property $ \n -> baseline n == n
+
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+
+pure native parseInt java.lang.Integer.parseInt :: String -> Int

@@ -1,0 +1,16 @@
+module de.rkraneis.projecteuler.frege.SolutionsTest where
+
+import de.rkraneis.projecteuler.frege.Util
+import de.rkraneis.projecteuler.frege.Solutions
+
+test :: String -> Int -> Int -> String
+test n p q = n ++ if p == q then " passed." else " failed."
+
+
+main _ = do
+  putStrLn "problem 1"
+  putStrLn (test "  generated" (problem1_generated 1000) 233168)
+  putStrLn (test "  filtered " (problem1_filtered 1000) 233168)
+  putStrLn (test "  series   " (problem1_series 1000) 233168)
+  putStrLn ""
+  putStrLn (test "problem2" (problem2 4000000) 4613732)
