@@ -220,5 +220,6 @@
         <profile><id>problem1</id><properties><mainClass>Problem1Benchmark</mainClass></properties></profile>
         <profile><id>problem2</id><properties><mainClass>Problem2Benchmark</mainClass></properties></profile>
         <profile><id>problem3</id><properties><mainClass>Problem3Benchmark</mainClass></properties></profile>
+        <profile><id>problem4</id><properties><mainClass>Problem4Benchmark</mainClass></properties></profile>
     </profiles>
 </project>

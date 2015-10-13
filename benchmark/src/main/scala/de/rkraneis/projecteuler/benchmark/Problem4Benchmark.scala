@@ -13,12 +13,12 @@ import org.openjdk.jmh.runner.options.OptionsBuilder
 import org.openjdk.jmh.runner.options.VerboseMode
 import org.openjdk.jmh.runner.options.TimeValue
 
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
-object Problem3Benchmark {
+@OutputTimeUnit(TimeUnit.SECONDS)
+object Problem4Benchmark {
 
   def main(args: Array[String]): Unit = {
-    val className = classOf[Problem3Benchmark].getSimpleName
-    val resultPath = classOf[Problem3Benchmark].getCanonicalName
+    val className = classOf[Problem4Benchmark].getSimpleName
+    val resultPath = classOf[Problem4Benchmark].getCanonicalName
     val resultFormat = ResultFormatType.JSON
     val resultExtension = resultFormat.toString.toLowerCase(Locale.ROOT)
     val opts = new OptionsBuilder()
@@ -28,7 +28,6 @@ object Problem3Benchmark {
       //.warmupTime(TimeValue.milliseconds(500))
       .measurementIterations(5)
       //.measurementTime(TimeValue.milliseconds(500))
-      .timeUnit(TimeUnit.MILLISECONDS)
       .result(resultPath + "/result." + resultExtension)
       .resultFormat(resultFormat)
       .forks(3)
@@ -54,9 +53,9 @@ import clojure.lang.IFn
 import de.rkraneis.projecteuler._
 
 @State(Scope.Thread)
-class Problem3Benchmark {
+class Problem4Benchmark {
 
-  var clj3: IFn = _
+  var clj4: IFn = _
   val NU = "de.rkraneis.projecteuler.clojure.util"
   val NS = "de.rkraneis.projecteuler.clojure.solutions"
 
@@ -65,19 +64,12 @@ class Problem3Benchmark {
     Class.forName("clojure.java.api.Clojure")
     Clojure.`var`("clojure.core", "require").invoke(Clojure.read(NS))
 
-    clj3 = Clojure.`var`(NS, "problem3")
+    clj4 = Clojure.`var`(NS, "problem4")
 
-    p3b = BigInteger.valueOf(p3)
   }
 
-  @Param(Array("600851475143")) var p3: Long = _
-  var p3b: BigInteger = _
-  @Benchmark def p3_clojure = clj3.invoke(p3)
-  @Benchmark def p3_java_l = java.Solutions.problem3(p3)
-  @Benchmark def p3_java_l2 = java.Solutions.problem3_last(p3)
-  @Benchmark def p3_java_ln = java.Solutions.problem3_noList(p3)
-  @Benchmark def p3_java_b = java.Solutions.problem3_BigInteger(p3b)
-  @Benchmark def p3_java_bnl = java.Solutions.problem3_BigInteger_noList(p3b)
-  @Benchmark def p3_scala = scala.Solutions.problem3(p3)
-  @Benchmark def p3_frege = frege.Solutions.problem3(p3b)
+  @Param(Array("100")) var p41: Int = _
+  @Param(Array("1000")) var p42: Int = _
+  @Benchmark def p4_clojure = clj4.invoke(p41, p42)
+  @Benchmark def p4_frege = frege.Solutions.problem4(p41, p42)
 }

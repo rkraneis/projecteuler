@@ -2,16 +2,25 @@ module de.rkraneis.projecteuler.frege.Solutions where
 
 import de.rkraneis.projecteuler.frege.Util
 
--- Find the sum of all the multiples of 3 or 5 below 1000.
+-- create lists of numbers and calculate
 problem1_generated n = sum [0,3..n'] + sum [0,5..n'] - sum [0,15..n']
                      where n' = n - 1
 
+-- use list comprehension
 problem1_filtered n = sum [ x | x <- [1..n'], x `mod` 3 == 0 || x `mod` 5 == 0 ]
                     where n' = n - 1
 
+-- use arithmetic series formula
 problem1_series n = ssum n' 3 + ssum n' 5 - ssum n' 15
                   where n' = n - 1
                         ssum' n = n * (n + 1) `div` 2
                         ssum n s = s * ssum' (n `div` s)
 
+-- create fibonacci sequence, filter even numbers and sum them up
 problem2 n = sum (takeWhile (`<` 4_000_000) (filter even fibs))
+
+-- create a sorted list of factors and return the largest
+problem3::Integer->Integer
+problem3 n = head (factor n)
+
+problem4 n m = largest_palindrome n (m - 1)

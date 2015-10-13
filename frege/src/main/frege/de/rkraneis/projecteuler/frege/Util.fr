@@ -9,4 +9,17 @@ testBaseline = property $ \n -> baseline n == n
 
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
+factor::Integer->[Integer]
+factor n = factor' n 2 []
+         where factor' 1 k acc = acc
+               factor' n k acc = if k `divides` n
+                                 then factor' (n `quot` k) k (k:acc)
+                                 else factor' n (succ k) acc
+
+divides::Integer->Integer->Bool
+k `divides` n = n `rem` k == 0
+
+largest_palindrome m n = maximum (map (parseInt . packed) (filter (\n -> n == reverse n) (map (toList . valueOf) [ x*y | x <- [m..n], y<-[x..n] ])))
+
 pure native parseInt java.lang.Integer.parseInt :: String -> Int
+pure native valueOf java.lang.String.valueOf :: Int -> String

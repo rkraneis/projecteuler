@@ -3,7 +3,7 @@ module de.rkraneis.projecteuler.frege.SolutionsTest where
 import de.rkraneis.projecteuler.frege.Util
 import de.rkraneis.projecteuler.frege.Solutions
 
-test :: String -> Int -> Int -> String
+--test :: String -> Integer -> Integer -> String
 test n p q = n ++ if p == q then " passed." else " failed."
 
 
@@ -14,3 +14,7 @@ main _ = do
   putStrLn (test "  series   " (problem1_series 1000) 233168)
   putStrLn ""
   putStrLn (test "problem2" (problem2 4000000) 4613732)
+  putStrLn ""
+  putStrLn (test "problem3" (problem3 600851475143n) 6857)
+  putStrLn ""
+  putStrLn (test "problem4" (problem4 100 1000) 906609)
