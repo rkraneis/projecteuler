@@ -3,10 +3,6 @@ module de.rkraneis.projecteuler.frege.Util where
 baseline::Int->Int
 baseline n = n
 
-import Test.QuickCheck
-
-testBaseline = property $ \n -> baseline n == n
-
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
 factor::Integer->[Integer]
@@ -19,7 +15,11 @@ factor n = factor' n 2 []
 divides::Integer->Integer->Bool
 k `divides` n = n `rem` k == 0
 
-largest_palindrome m n = maximum (map (parseInt . packed) (filter (\n -> n == reverse n) (map (toList . valueOf) [ x*y | x <- [m..n], y<-[x..n] ])))
+largest_palindrome m n =
+  maximum (map (parseInt . packed)
+               (filter (\n -> n == reverse n)
+                       (map (toList . valueOf)
+                            [ x*y | x <- [m..n], y<-[x..n] ])))
 
 pure native parseInt java.lang.Integer.parseInt :: String -> Int
 pure native valueOf java.lang.String.valueOf :: Int -> String

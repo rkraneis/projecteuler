@@ -1,0 +1,11 @@
+module de.rkraneis.projecteuler.frege.UtilTest where
+
+import de.rkraneis.projecteuler.frege.Util
+import Test.QuickCheck
+
+smallInts = choose (1, 25) -- fib wil fail for larger inputs
+
+bp = property $ \n -> baseline n == n
+fibs_prop = once $ take 12 fibs == [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+fibs2_prop = forAll smallInts $ \n -> fib (n+2) == fib n + fib (n+1)
+             where fib n = last $ take n fibs

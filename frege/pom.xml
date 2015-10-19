@@ -78,10 +78,15 @@
                                 <argument>-classpath</argument>
                                 <classpath/>
                                 <argument>frege.tools.Quick</argument>
-                                <argument>${project.build.outputDirectory}</argument>
+                                <!-- verbose -->
+                                <argument>-v</argument>
+                                <!-- only list predicates -->
+                                <!--argument>-l</argument-->
+                                <argument>${project.build.testOutputDirectory}</argument>
                             </arguments>
                         </configuration>
                     </execution>
+                    <!--
                     <execution>
                         <id>frege-test</id>
                         <phase>test</phase>
@@ -98,6 +103,7 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    -->
                 </executions>
             </plugin>
         </plugins>
