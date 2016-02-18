@@ -24,8 +24,8 @@ public class Util {
 
     public static IntPredicate even = n -> (n & 1) == 0;
 
-    public static boolean is(int i, IntPredicate p) {
-        return p.test(i);
+    public static boolean isEven(int i) {
+        return even.test(i);
     }
 
     private static class IncrementGenerator extends AbstractGenerator {

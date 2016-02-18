@@ -4,18 +4,14 @@ package de.rkraneis.projecteuler.java;
 import static java.util.stream.IntStream.*;
 import static de.rkraneis.projecteuler.java.Util.*;
 import java.math.BigInteger;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
-import java.util.function.IntUnaryOperator;
 
 public class Solutions {
 
     public static int problem1_LoopFiltered(final int n) {
         int sum = 0;
         for (int i = 0; i < n; i++) {
-            if (is(i, divisibleByThree.or(divisibleByFive))) {
+            if (i % 3 == 0 || i % 5 == 0) {
                 sum += i;
             }
         }
@@ -80,7 +76,7 @@ public class Solutions {
         int sum = 0, current = 0;
         int previousPrevious = 0, previous = 1;
         do {
-            if (is(current, even)) {
+            if (isEven(current)) {
                 sum += current;
             }
             current = previous;
