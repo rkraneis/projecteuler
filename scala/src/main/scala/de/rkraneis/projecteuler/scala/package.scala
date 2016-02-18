@@ -42,4 +42,14 @@ object `package` {
     else if (divides(k, n)) factor(n / k, k, k :: acc)
     else factor(n, k + fromInt(1), acc)
   }
+
+  def divides[T: Integral](k: T, n: T) =
+    implicitly[Integral[T]].rem(n, k) == implicitly[Integral[T]].fromInt(0)
+
+  private def factorSlow[T: Integral](n: T, k: T, acc: List[T]): List[T] = {
+    import Integral._
+    if (n == 1) acc
+    else if (divides(k, n)) factor(n / k, k, k :: acc)
+    else factor(n, k + fromInt(1), acc)
+  }
 }
