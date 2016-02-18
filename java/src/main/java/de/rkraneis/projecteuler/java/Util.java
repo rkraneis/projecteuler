@@ -2,9 +2,7 @@
 package de.rkraneis.projecteuler.java;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Spliterators;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
@@ -47,10 +45,12 @@ public class Util {
             this(0, 1, p);
         }
 
+        @Override
         protected void advance() {
             current += step;
         }
 
+        @Override
         protected int current() {
             return current;
         }
@@ -73,12 +73,14 @@ public class Util {
             super(p);
         }
 
+        @Override
         protected void advance() {
             int nextNext = current + next;
             current = next;
             next = nextNext;
         }
 
+        @Override
         protected int current() {
             return current;
         }
@@ -197,6 +199,11 @@ abstract class AbstractGenerator extends Spliterators.AbstractIntSpliterator {
     protected AbstractGenerator(IntPredicate p) {
         super(Long.MAX_VALUE, 0);
         this.mayAdvance = p;
+    }
+
+    protected AbstractGenerator() {
+        super(Long.MAX_VALUE, 0);
+        this.mayAdvance = i -> true;
     }
 
     private boolean mayAdvance() {
